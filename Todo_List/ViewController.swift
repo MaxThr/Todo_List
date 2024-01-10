@@ -103,7 +103,7 @@ extension ViewController: CheckTableViewCellDelegate {
             return
         }
         let todo = todos[indexPath.row]
-        let newTodo = Todo(title: todo.title, isComplete: checked)
+        let newTodo = Todo(title: todo.title,description: todo.description, isComplete: checked)
         
         todos[indexPath.row] = newTodo
     }

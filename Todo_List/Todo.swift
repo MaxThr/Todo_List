@@ -10,14 +10,16 @@ import Foundation
 
 struct Todo {
     let title: String
+    var description: String
     let isComplete: Bool
     
-    init(title: String, isComplete: Bool = false){
+    init(title: String, description: String, isComplete: Bool = false){
         self.title = title
+        self.description = description
         self.isComplete = isComplete
     }
     
     func completeToggled() -> Todo {
-        return Todo(title: title, isComplete: !isComplete)
+        return Todo(title: title, description: description, isComplete: !isComplete)
     }
 }

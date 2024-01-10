@@ -14,6 +14,9 @@ protocol TodoViewControllerDelegate: AnyObject{
 class TodoViewController: UIViewController {
     
     @IBOutlet weak var textfield: UITextField!
+    
+    @IBOutlet weak var descriptiontextfield: UITextField!
+    
     var todo: Todo?
     
     weak var delegate: TodoViewControllerDelegate?
@@ -22,11 +25,12 @@ class TodoViewController: UIViewController {
         super.viewDidLoad()
         
         textfield.text = todo?.title
+        descriptiontextfield.text = todo?.description
 
     }
     
     @IBAction func save(_ sender: Any) {
-        let todo = Todo(title: textfield.text!)
+        let todo = Todo(title: textfield.text!, description: descriptiontextfield.text!)
         delegate?.todoViewController(self, didSaveTodo: todo)
     }
     
