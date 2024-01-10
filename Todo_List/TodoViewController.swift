@@ -17,6 +17,7 @@ class TodoViewController: UIViewController {
     
     @IBOutlet weak var descriptiontextfield: UITextField!
     
+    @IBOutlet weak var dueDatePicker: UIDatePicker!
     var todo: Todo?
     
     weak var delegate: TodoViewControllerDelegate?
@@ -26,11 +27,15 @@ class TodoViewController: UIViewController {
         
         textfield.text = todo?.title
         descriptiontextfield.text = todo?.description
+        
+        if let dueDate = todo?.dueDate{
+            dueDatePicker.date = dueDate
+        }
 
     }
     
     @IBAction func save(_ sender: Any) {
-        let todo = Todo(title: textfield.text!, description: descriptiontextfield.text!)
+        let todo = Todo(title: textfield.text!, description: descriptiontextfield.text!, dueDate: dueDatePicker.date)
         delegate?.todoViewController(self, didSaveTodo: todo)
     }
     
